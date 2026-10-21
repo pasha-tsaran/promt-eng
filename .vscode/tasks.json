@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "contractFile",
+      "type": "promptString",
+      "description": "Полный путь к договору .docx (без внешних кавычек)"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Договор: проверить Word-файл и задать вопросы",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["-X", "utf8", "${workspaceFolder}/main.py", "--file", "${input:contractFile}"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated", "focus": true}
+    },
+    {
+      "label": "Договор: сравнить два промпта (2 API-запроса)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["-X", "utf8", "${workspaceFolder}/main.py", "--compare"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "Договор: проверить настройки без API",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["-X", "utf8", "${workspaceFolder}/main.py", "--dry-run"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+*.log
+contracts/
+private_contract_results/
+.coverage
+.ruff_cache/
+tests/.tmp-*/
+contract_review_homework.zip
